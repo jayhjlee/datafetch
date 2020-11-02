@@ -12,7 +12,6 @@ class App extends Component {
 		return (
 			<Provider store={store}>
 				<Header />
-				<Sidebar />
 				<Home />
 			</Provider>
 		);

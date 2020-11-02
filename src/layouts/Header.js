@@ -19,21 +19,16 @@ class Header extends Component {
 
 		return (
 			<section>
-				<header className="navbar">
-					<div className="container">
-						<nav className="flex">
-							<h1>DBuilder</h1>
-							<ul className="my-1">
-								{username && token && isLoggedIn ? (
-									<li className="mx-1">
-										Welcome! {username}{" "}
-										<a onClick={this.handleLogOut}>Logout</a>
-									</li>
-								) : null}
-							</ul>
-						</nav>
-					</div>
-				</header>
+				<nav className="navbar flex px-1">
+					<h1>DBuilder</h1>
+					<ul>
+						{username && token && isLoggedIn ? (
+							<li className="mx-1">
+								Welcome! {username} <a onClick={this.handleLogOut}>Logout</a>
+							</li>
+						) : null}
+					</ul>
+				</nav>
 			</section>
 		);
 	}

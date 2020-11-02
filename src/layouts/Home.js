@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Login from "./Login";
+import Sidebar from "./Sidebar";
+import Create from "./Create";
 
 import { signIn, fetchUser } from "../store/actions/user";
 
@@ -42,10 +45,13 @@ class Home extends Component {
 
 		return (
 			<section>
-				{isLoggedIn && token ? (
-					<div className="welcome-view">
-						<div className="card">{user} is logged in!</div>
-					</div>
+				{isLoggedIn && token && user ? (
+					<Router>
+						<Sidebar />
+						<Switch>
+							<Route path="/create-schema" component={Create} />
+						</Switch>
+					</Router>
 				) : (
 					<Login
 						username={username}
