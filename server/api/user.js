@@ -16,7 +16,7 @@ router.post("/login", async (req, res) => {
 				if (err) {
 					res.json(err);
 				} else {
-					res.json({ token, isLoggedIn: true });
+					res.json({ username, token, isLoggedIn: true });
 				}
 			});
 		}

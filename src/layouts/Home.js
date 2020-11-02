@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import Login from "./Login";
 
-import { signIn } from "../store/actions/login";
+import { signIn, fetchUser } from "../store/actions/user";
 
 class Home extends Component {
 	constructor(props) {
@@ -15,6 +15,10 @@ class Home extends Component {
 			username: "",
 			password: "",
 		};
+	}
+
+	componentDidMount() {
+		this.props.loadUser();
 	}
 
 	handleChange(e) {
@@ -30,13 +34,13 @@ class Home extends Component {
 
 	render() {
 		const { username, password } = this.state;
-		const { isLoggedIn, token } = this.props;
+		const { isLoggedIn, token, user } = this.props;
 
 		return (
 			<section>
 				{isLoggedIn && token ? (
 					<div className="welcome-view">
-						<div className="card">You are logged in!</div>
+						<div className="card">{user} is logged in!</div>
 					</div>
 				) : (
 					<Login
@@ -52,16 +56,18 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-	const { isLoggedIn, token } = state.login;
+	const { isLoggedIn, token, username } = state.user;
 
 	return {
 		isLoggedIn,
 		token,
+		user: username,
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
+		loadUser: () => dispatch(fetchUser()),
 		login: credential => dispatch(signIn(credential)),
 	};
 };

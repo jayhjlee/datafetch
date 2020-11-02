@@ -35,6 +35,8 @@
 }
 
 /* Margin */
+
+/* Top and Bottom*/
 .my-1 {
 	margin: 1rem 0;
 }
@@ -55,6 +57,112 @@
 	margin: 4rem 0;
 }
 
+/* Left and Right*/
+.mx-1 {
+	margin: 0 1rem;
+}
+
+.mx-2 {
+	margin: 0 1.5rem;
+}
+
+.mx-3 {
+	margin: 0 2rem;
+}
+
+.mx-4 {
+	margin: 0 3rem;
+}
+
+.mx-5 {
+	margin: 0 4rem;
+}
+
+/* Top */
+.mt-1 {
+	margin: 1rem 0 0 0;
+}
+
+.mt-2 {
+	margin: 1.5rem 0 0 0;
+}
+
+.mt-3 {
+	margin: 2rem 0 0 0;
+}
+
+.mt-4 {
+	margin: 3rem 0 0 0;
+}
+
+.mt-5 {
+	margin: 4rem 0 0 0;
+}
+
+/* Bottom */
+.mb-1 {
+	margin: 0 0 1rem 0;
+}
+
+.mb-2 {
+	margin: 0 0 1.5rem 0;
+}
+
+.mb-3 {
+	margin: 0 0 2rem 0;
+}
+
+.mb-4 {
+	margin: 0 0 3rem 0;
+}
+
+.mb-5 {
+	margin: 0 0 4rem 0;
+}
+
+/* Left */
+.ml-1 {
+	margin: 0 0 0 1rem;
+}
+
+.ml-2 {
+	margin: 0 0 0 1.5rem;
+}
+
+.ml-3 {
+	margin: 0 0 0 2rem;
+}
+
+.ml-4 {
+	margin: 0 0 0 3rem;
+}
+
+.ml-5 {
+	margin: 0 0 0 4rem;
+}
+
+/* Right */
+.mr-1 {
+	margin: 0 1rem 0 0;
+}
+
+.mr-2 {
+	margin: 0 1.5rem 0 0;
+}
+
+.mr-3 {
+	margin: 0 2rem 0 0;
+}
+
+.mr-4 {
+	margin: 0 3rem 0 0;
+}
+
+.mr-5 {
+	margin: 0 4rem 0 0;
+}
+
+/* All */
 .m-1 {
 	margin: 1rem;
 }

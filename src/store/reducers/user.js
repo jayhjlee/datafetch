@@ -1,8 +1,9 @@
-import { LOGGED_IN } from "../types/login";
+import { LOGGED_IN } from "../types/user";
 
 const initialState = {
 	isLoggedIn: false,
 	token: null,
+	username: "",
 };
 
 export default function (state = initialState, action) {
@@ -12,6 +13,7 @@ export default function (state = initialState, action) {
 				...state,
 				isLoggedIn: action.payload.isLoggedIn,
 				token: action.payload.token,
+				username: action.payload.username,
 			};
 		default:
 			return state;
