@@ -1,8 +1,9 @@
 import axios from "axios";
-import { LOGGED_IN } from "../types/user";
+import { LOGGED_IN, LOGGED_OUT } from "../types/user";
 
 const validUser = data => ({ type: LOGGED_IN, payload: data });
 const gotUser = data => ({ type: LOGGED_IN, payload: data });
+const logOutUser = () => ({ type: LOGGED_OUT });
 
 export const fetchUser = () => dispatch => {
 	const { isLoggedIn, username, token } = localStorage;
@@ -19,4 +20,12 @@ export const signIn = credential => async dispatch => {
 	localStorage.setItem("username", data.username);
 
 	dispatch(validUser(data));
+};
+
+export const logOut = () => dispatch => {
+	localStorage.removeItem("token");
+	localStorage.removeItem("isLoggedIn");
+	localStorage.removeItem("username");
+
+	dispatch(logOutUser());
 };

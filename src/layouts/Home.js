@@ -30,6 +30,10 @@ class Home extends Component {
 	handleLogin(e) {
 		e.preventDefault();
 		this.props.login(this.state);
+		this.setState({
+			username: "",
+			password: "",
+		});
 	}
 
 	render() {

@@ -1,4 +1,4 @@
-import { LOGGED_IN } from "../types/user";
+import { LOGGED_IN, LOGGED_OUT } from "../types/user";
 
 const initialState = {
 	isLoggedIn: false,
@@ -14,6 +14,13 @@ export default function (state = initialState, action) {
 				isLoggedIn: action.payload.isLoggedIn,
 				token: action.payload.token,
 				username: action.payload.username,
+			};
+		case LOGGED_OUT:
+			return {
+				...state,
+				isLoggedIn: false,
+				token: null,
+				username: "",
 			};
 		default:
 			return state;

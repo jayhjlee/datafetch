@@ -1,9 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { fetchUser } from "../store/actions/user";
+import { logOut, fetchUser } from "../store/actions/user";
 
 class Header extends Component {
+	constructor(props) {
+		super(props);
+
+		this.handleLogOut = this.handleLogOut.bind(this);
+	}
+
+	handleLogOut() {
+		this.props.logOut();
+	}
+
 	render() {
 		const { username, token, isLoggedIn } = this.props;
 
@@ -16,7 +26,8 @@ class Header extends Component {
 							<ul className="my-1">
 								{username && token && isLoggedIn ? (
 									<li className="mx-1">
-										Welcome! {username} <a>Logout</a>
+										Welcome! {username}{" "}
+										<a onClick={this.handleLogOut}>Logout</a>
 									</li>
 								) : null}
 							</ul>
