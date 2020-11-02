@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const { conn } = require("./server/db");
 
 const PORT = 8080;
 
@@ -20,6 +21,8 @@ app.get("*", (req, res) => {
 });
 
 // Below lines need to be modified in order to sync up with your db with your configuration.
-app.listen(PORT, () => {
-	console.log(`Server is running at port ${PORT}`);
+conn.sync({ alter: true }).then(() => {
+	app.listen(PORT, () => {
+		console.log(`Server is running at port ${PORT}`);
+	});
 });

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Input from "../components/Input";
-import Button from "../components/Button";
+import Login from "./Login";
 
 import { signIn } from "../store/actions/login";
 
@@ -10,16 +9,27 @@ class Home extends Component {
 	constructor(props) {
 		super(props);
 		this.handleLogin = this.handleLogin.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+
+		this.state = {
+			username: "",
+			password: "",
+		};
+	}
+
+	handleChange(e) {
+		this.setState({
+			[e.target.name]: e.target.value,
+		});
 	}
 
 	handleLogin(e) {
 		e.preventDefault();
-
-		const mockCredential = "fakeCredential";
-		this.props.login(mockCredential);
+		this.props.login(this.state);
 	}
 
 	render() {
+		const { username, password } = this.state;
 		const { isLoggedIn, token } = this.props;
 
 		return (
@@ -29,16 +39,12 @@ class Home extends Component {
 						<div className="card">You are logged in!</div>
 					</div>
 				) : (
-					<div className="login-form">
-						<div className="card">
-							<h2>Login</h2>
-							<form>
-								<Input label="Username" />
-								<Input label="Password" type="password" />
-								<Button action={this.handleLogin} innerText="Login" />
-							</form>
-						</div>
-					</div>
+					<Login
+						username={username}
+						password={password}
+						handleChange={this.handleChange}
+						handleSubmit={this.handleLogin}
+					/>
 				)}
 			</section>
 		);

@@ -3,11 +3,12 @@ import { LOGGED_IN } from "../types/login";
 
 const validUser = data => ({ type: LOGGED_IN, payload: data });
 
-export const signIn = credential => dispatch => {
-	const mockResponse = {
-		isLoggedIn: true,
-		token: 1234,
-	};
+export const signIn = credential => async dispatch => {
+	const res = await axios.post("/api/user/login", credential);
+	const { data } = res;
 
-	dispatch(validUser(mockResponse));
+	localStorage.setItem("token", data.token);
+	localStorage.setItem("isLoggedIn", data.isLoggedIn);
+
+	dispatch(validUser(data));
 };
